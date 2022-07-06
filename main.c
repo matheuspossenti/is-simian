@@ -21,6 +21,7 @@ int analisaLinha(char**, int, int);
 int analisaColuna(char**, int, int);
 int analisaDiagonalP(char**, int, int);
 int analisaDiagonalS(char**, int, int);
+void liberaMemoriaMatriz(char**, int);
 
 int main () {
   char **dna;
@@ -42,6 +43,7 @@ int main () {
     printf(BLU "\nO usuário é humano\n" RESET);
   }
   printf(RED "Fim do Programa!\n" RESET);
+  liberaMemoriaMatriz(dna, tam);
 }
 
 // Aloca memoria para o vetor
@@ -155,6 +157,17 @@ char** alocaMemoriaMatriz(int tam) {
     }
   }
   return(m);
+}
+
+// Aloca memoria para a matriz
+void liberaMemoriaMatriz(char **matriz, int tam) {
+  char **m;
+  int i;
+  for(i=0; i<tam;i++){
+    free(m[i]);
+  }
+
+  free(matriz);
 }
 
 // Imprime a matriz
